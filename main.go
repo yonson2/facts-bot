@@ -56,7 +56,12 @@ You can control facts by sending these commands:
 		return c.Send(text)
 	})
 
-	bot.Start()
+	go bot.Start()
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, world!"))
+	})
+
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
 
 type FactResponse struct {
