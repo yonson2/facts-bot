@@ -6,4 +6,5 @@ COPY . ./
 RUN go mod download
 RUN go build -o /bot ./main.go
 
+EXPOSE 3002
 CMD ["/bot"]
